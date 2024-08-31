@@ -44,7 +44,13 @@ jobs:
           file: Dockerfile  # Ensure your Dockerfile is in the root of the repository
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:latest
-
+          
+       # Step 7: Install Docker Compose
+      - name: Install Docker Compose
+        run: |
+          curl -L "https://github.com/docker/compose/releases/download/v2.0.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          chmod +x /usr/local/bin/docker-compose
+          
       # Step 7: Deploy with Docker Compose
       - name: Deploy with Docker Compose
         run: |
