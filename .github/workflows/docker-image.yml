@@ -43,7 +43,7 @@ jobs:
           context: .
           file: Dockerfile  # Ensure your Dockerfile is in the root of the repository
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/myapp:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/employee:latest
           
        # Step 7: Install Docker Compose
       - name: Install Docker Compose
@@ -54,9 +54,8 @@ jobs:
       # Step 7: Deploy with Docker Compose
       - name: Deploy with Docker Compose
         run: |
-          docker-compose -f docker-compose.yml up -d
+          docker compose -f docker-compose.yml up -d
         env:
-          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          
           MAIL_USERNAME: ${{ secrets.MAIL_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
