@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 version: '3.8'
+=======
+lversion: '3.8'
+
+>>>>>>> f2218ebb3eab0b47e9c199d3294a5362181a45b4
 services:
   postgres:
     image: postgres:latest
@@ -21,6 +26,25 @@ services:
       - postgres
     ports:
       - "8080:8080"
+<<<<<<< HEAD
+=======
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/employee
+      - SPRING_DATASOURCE_USERNAME=username
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_MAIL_USERNAME=${secrets.MAIL_USERNAME}
+      - SPRING_MAIL_PASSWORD=${secrets.MAIL_PASSWORD}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: postgresdb
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=employee
+>>>>>>> f2218ebb3eab0b47e9c199d3294a5362181a45b4
     volumes:
       - .:/app
     working_dir: /app
